@@ -130,7 +130,7 @@ namespace DeviceManagement_WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var category = _categoriesRepository.GetById(id); ;
+            var category = _categoriesRepository.GetById(id);
             _categoriesRepository.Remove(category);
             _categoriesRepository.SaveChanges();
             return RedirectToAction(nameof(Index));

@@ -49,7 +49,7 @@ namespace DeviceManagement_WebApp.Controllers
         // GET: Devices/Create
         public IActionResult Create()
         {
-            ViewData["CategoryId"] = new SelectList(_devicesRepository.Category, "CategoryId", "CategoryName");
+            ViewData["CategoryId"] = new SelectList(_devicesRepository.GetCategory(), "CategoryId", "CategoryName");
             ViewData["ZoneId"] = new SelectList(_devicesRepository.Zone, "ZoneId", "ZoneName");
             return View();
         }
