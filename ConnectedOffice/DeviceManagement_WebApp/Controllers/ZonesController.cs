@@ -19,7 +19,7 @@ namespace DeviceManagement_WebApp.Controllers
             _zonesRepository = zonesRepository;
         }
 
-        // GET: Zones
+        // GET all zones
         public async Task<IActionResult> Index()
         {
             var zones = _zonesRepository.GetAll();
