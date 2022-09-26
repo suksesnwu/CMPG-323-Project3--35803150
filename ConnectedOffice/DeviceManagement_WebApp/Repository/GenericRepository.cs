@@ -3,6 +3,8 @@ using System.Linq.Expressions;
 using System;
 using DeviceManagement_WebApp.Data;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace DeviceManagement_WebApp.Repository
 {
@@ -29,7 +31,7 @@ namespace DeviceManagement_WebApp.Repository
         {
             return _context.Set<T>().ToList();
         }
-        public T GetById(int id)
+        public T GetById(Guid? id)
         {
             return _context.Set<T>().Find(id);
         }
@@ -41,5 +43,25 @@ namespace DeviceManagement_WebApp.Repository
         {
             _context.Set<T>().RemoveRange(entities);
         }
+
+        //update entity
+        public void Update(T entity)
+        {
+            _context.Update(entity);
+            _context.SaveChanges();
+        }
+
+        //save changes after update/delete/add
+        public void SaveChanges()
+        {
+            _context.SaveChangesAsync();
+        }
+
+        //check whether the item exist
+        public bool Exists(Guid? id)
+        {
+            return _context.Set<T>().Find(id) != null;
+        }
+
     }
 }

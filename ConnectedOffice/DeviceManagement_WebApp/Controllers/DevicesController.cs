@@ -63,7 +63,6 @@ namespace DeviceManagement_WebApp.Controllers
         {
             device.DeviceId = Guid.NewGuid();
             _devicesRepository.Add(device);
-            await _devicesRepository.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
 
 

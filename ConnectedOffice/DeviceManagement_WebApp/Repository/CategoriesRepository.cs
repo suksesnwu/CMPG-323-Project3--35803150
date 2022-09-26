@@ -9,23 +9,16 @@ using System;
 
 namespace DeviceManagement_WebApp.Repository
 {
-    public class CategoriesRepository
+    public class CategoriesRepository : GenericRepository<Category>, ICategoriesRepository
     {
-        private readonly ConnectedOfficeContext _context;
-
-        // GET: Categories
-        public List<Category> GetAll()
+ 
+        public CategoriesRepository(ConnectedOfficeContext context) : base(context)
         {
-            return _context.Category.ToList();
         }
 
-        // GET: Categories/Details/5
-        public async Task<Category> GetById(Guid? id)
-        {    
-            var category = await _context.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
-
-            return (category);
+        public Category GetMostRecentService()
+        {
+            return _context.Category.OrderByDescending(category => category.DateCreated).FirstOrDefault();
         }
     }
 }

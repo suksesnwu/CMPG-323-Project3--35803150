@@ -9,23 +9,15 @@ using System;
 
 namespace DeviceManagement_WebApp.Repository
 {
-    public class DevicesRepository
+    public class DevicesRepository : GenericRepository<Device>, IDevicesRepository
     {
-        private readonly ConnectedOfficeContext _context;
-
-        // GET: Categories
-        public List<Device> GetAll()
+        public DevicesRepository(ConnectedOfficeContext context) : base(context)
         {
-            return _context.Device.ToList();
         }
 
-        // GET: Categories/Details/5
-        public async Task<Device> GetById(Guid? id)
+        public Device GetMostRecentService()
         {
-            var device = await _context.Device
-                .FirstOrDefaultAsync(m => m.DeviceId == id);
-
-            return (device);
+            return _context.Device.OrderByDescending(device => device.DateCreated).FirstOrDefault();
         }
     }
 }

@@ -34,8 +34,7 @@ namespace DeviceManagement_WebApp.Controllers
                 return NotFound();
             }
 
-            var category = _categoriesRepository.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            var category = _categoriesRepository.GetById(id);
             if (category == null)
             {
                 return NotFound();
@@ -59,7 +58,7 @@ namespace DeviceManagement_WebApp.Controllers
         {
             category.CategoryId = Guid.NewGuid();
             _categoriesRepository.Add(category);
-            await _categoriesRepository.SaveChangesAsync();
+            _categoriesRepository.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
@@ -71,7 +70,7 @@ namespace DeviceManagement_WebApp.Controllers
                 return NotFound();
             }
 
-            var category = await _categoriesRepository.Category.FindAsync(id);
+            var category = _categoriesRepository.GetById(id);
             if (category == null)
             {
                 return NotFound();
@@ -93,7 +92,7 @@ namespace DeviceManagement_WebApp.Controllers
             try
             {
                 _categoriesRepository.Update(category);
-                await _categoriesRepository.SaveChangesAsync();
+                _categoriesRepository.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -117,8 +116,7 @@ namespace DeviceManagement_WebApp.Controllers
                 return NotFound();
             }
 
-            var category = await _categoriesRepository.Category
-                .FirstOrDefaultAsync(m => m.CategoryId == id);
+            var category = _categoriesRepository.GetById(id);
             if (category == null)
             {
                 return NotFound();
@@ -132,15 +130,15 @@ namespace DeviceManagement_WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
-            var category = await _categoriesRepository.Category.FindAsync(id);
-            _categoriesRepository.Category.Remove(category);
-            await _categoriesRepository.SaveChangesAsync();
+            var category = _categoriesRepository.GetById(id); ;
+            _categoriesRepository.Remove(category);
+            _categoriesRepository.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
         private bool CategoryExists(Guid id)
         {
-            return _categoriesRepository.Category.Any(e => e.CategoryId == id);
+            return _categoriesRepository.Exists(id);
         }
     }
 }
