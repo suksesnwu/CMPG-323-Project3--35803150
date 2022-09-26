@@ -27,11 +27,11 @@ namespace DeviceManagement_WebApp.Repository
         {
             return _context.Set<T>().Where(expression);
         }
-        public IEnumerable<T> GetAll()
+        public virtual IEnumerable<T> GetAll()
         {
             return _context.Set<T>().ToList();
         }
-        public T GetById(Guid? id)
+        public virtual T GetById(Guid? id)
         {
             return _context.Set<T>().Find(id);
         }
@@ -52,9 +52,9 @@ namespace DeviceManagement_WebApp.Repository
         }
 
         //save changes after update/delete/add
-        public void SaveChanges()
+        public async Task SaveChanges()
         {
-            _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
         }
 
         //check whether the item exist

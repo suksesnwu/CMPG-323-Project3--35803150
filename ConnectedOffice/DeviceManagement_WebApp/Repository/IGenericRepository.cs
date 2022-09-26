@@ -19,7 +19,7 @@ namespace DeviceManagement_WebApp.Repository
         void Update(T entity);
 
         //save changes after update/delete/add
-        void SaveChanges();
+        Task SaveChanges();
 
         //check whether the item exist
         bool Exists(Guid? id);
