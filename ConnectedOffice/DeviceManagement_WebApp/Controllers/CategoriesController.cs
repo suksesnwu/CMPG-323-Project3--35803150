@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using DeviceManagement_WebApp.Data;
 using DeviceManagement_WebApp.Models;
 using DeviceManagement_WebApp.Repository;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace DeviceManagement_WebApp.Controllers
 {
@@ -19,14 +20,14 @@ namespace DeviceManagement_WebApp.Controllers
             _categoriesRepository = categoriesRepository;
         }
 
-        // GET: Categories
+        // retrieves all Zone entries
         public async Task<IActionResult> Index()
         {
             var categories = _categoriesRepository.GetAll();
             return View(categories);
         }
 
-        // GET: Categories/Details/5
+        // retrieve one Zone from the database based on the ID parsed through
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -35,6 +36,7 @@ namespace DeviceManagement_WebApp.Controllers
             }
 
             var category = _categoriesRepository.GetById(id);
+            await _categoriesRepository.SaveChanges();
             if (category == null)
             {
                 return NotFound();
@@ -43,26 +45,24 @@ namespace DeviceManagement_WebApp.Controllers
             return View(category);
         }
 
-        // GET: Categories/Create
+        // create a new Zone entry on database
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // create a new Zone entry on database
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,CategoryDescription,DateCreated")] Category category)
         {
             category.CategoryId = Guid.NewGuid();
             _categoriesRepository.Add(category);
-            _categoriesRepository.SaveChanges();
+            await _categoriesRepository.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Categories/Edit/5
+        // update an existing Zone entry the database
         public async Task<IActionResult> Edit(Guid? id)
         {
             if (id == null)
@@ -71,6 +71,7 @@ namespace DeviceManagement_WebApp.Controllers
             }
 
             var category = _categoriesRepository.GetById(id);
+            await _categoriesRepository.SaveChanges();
             if (category == null)
             {
                 return NotFound();
@@ -78,9 +79,7 @@ namespace DeviceManagement_WebApp.Controllers
             return View(category);
         }
 
-        // POST: Categories/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // update an existing Zone entry on the database
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("CategoryId,CategoryName,CategoryDescription,DateCreated")] Category category)
@@ -92,7 +91,7 @@ namespace DeviceManagement_WebApp.Controllers
             try
             {
                 _categoriesRepository.Update(category);
-                _categoriesRepository.SaveChanges();
+                await _categoriesRepository.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -108,7 +107,7 @@ namespace DeviceManagement_WebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Categories/Delete/5
+        // delete an existing Zone entry on the database
         public async Task<IActionResult> Delete(Guid? id)
         {
             if (id == null)
@@ -117,6 +116,7 @@ namespace DeviceManagement_WebApp.Controllers
             }
 
             var category = _categoriesRepository.GetById(id);
+            await _categoriesRepository.SaveChanges();
             if (category == null)
             {
                 return NotFound();
@@ -125,17 +125,18 @@ namespace DeviceManagement_WebApp.Controllers
             return View(category);
         }
 
-        // POST: Categories/Delete/5
+        // confirm an existing Zone entry on the database is deleted
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
             var category = _categoriesRepository.GetById(id);
             _categoriesRepository.Remove(category);
-            _categoriesRepository.SaveChanges();
+            await _categoriesRepository.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
 
+        //  checks if a Zone exists (based on the ID parsed through) before editing or deleting an item
         private bool CategoryExists(Guid id)
         {
             return _categoriesRepository.Exists(id);
