@@ -24,6 +24,7 @@ namespace DeviceManagement_WebApp.Controllers
         public async Task<IActionResult> Index()
         {
             var devices = _devicesRepository.GetAll();
+            await _devicesRepository.SaveChanges();
             return View(devices);
         }
 

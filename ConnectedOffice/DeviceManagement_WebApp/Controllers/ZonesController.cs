@@ -56,6 +56,7 @@ namespace DeviceManagement_WebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ZoneId,ZoneName,ZoneDescription,DateCreated")] Zone zone)
         {
+
             zone.ZoneId = Guid.NewGuid();
             _zonesRepository.Add(zone);
             await _zonesRepository.SaveChanges();
