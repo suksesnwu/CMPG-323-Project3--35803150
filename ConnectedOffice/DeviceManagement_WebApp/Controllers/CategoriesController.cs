@@ -9,9 +9,11 @@ using DeviceManagement_WebApp.Data;
 using DeviceManagement_WebApp.Models;
 using DeviceManagement_WebApp.Repository;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DeviceManagement_WebApp.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         private readonly ICategoriesRepository _categoriesRepository;
@@ -25,7 +27,7 @@ namespace DeviceManagement_WebApp.Controllers
         {
             var categories = _categoriesRepository.GetAll();
 
-            await _categoriesRepository.SaveChanges();
+            // await _categoriesRepository.SaveChanges();
             return View(categories);
         }
 

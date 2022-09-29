@@ -1,5 +1,4 @@
-﻿
-using DeviceManagement_WebApp.Models;
+﻿using DeviceManagement_WebApp.Models;
 
 namespace DeviceManagement_WebApp.Repository
 {

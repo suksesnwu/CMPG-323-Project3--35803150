@@ -22,8 +22,8 @@ namespace DeviceManagement_WebApp.Repository
 
         public override IEnumerable<Device> GetAll()
         {
-            var alldevices = _context.Device.Include(d => d.Category).Include(d => d.Zone);
-            return alldevices.ToList();
+            var connectedOfficeContext = _context.Device.Include(d => d.Category).Include(d => d.Zone);
+            return connectedOfficeContext.ToList();
         }
 
         public override Device GetById(Guid? id)

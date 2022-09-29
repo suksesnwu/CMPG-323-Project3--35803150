@@ -9,9 +9,11 @@ using DeviceManagement_WebApp.Data;
 using DeviceManagement_WebApp.Models;
 using DeviceManagement_WebApp.Repository;
 using System.Buffers.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace DeviceManagement_WebApp.Controllers
 {
+    [Authorize]
     public class DevicesController : Controller
     {
         private readonly IDevicesRepository _devicesRepository;
@@ -23,9 +25,7 @@ namespace DeviceManagement_WebApp.Controllers
         // retrieves all Device entries
         public async Task<IActionResult> Index()
         {
-            var devices = _devicesRepository.GetAll();
-            await _devicesRepository.SaveChanges();
-            return View(devices);
+            return View(_devicesRepository.GetAll());
         }
 
         // retrieve one Device from the database based on the ID parsed through
