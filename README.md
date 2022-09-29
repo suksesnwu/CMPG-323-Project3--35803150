@@ -74,9 +74,12 @@ There are options for each zones, click on the icons next to any zone to do the 
 
 #### Edit and Update an Existing Zone
 You can edit a zone that has already been created.
-- Go to <a href="https://iotsystem35803150.azurewebsites.net/Zones">Zones</a> and click on the edit icon of the zone you would like to edit. This will open the zone in the **Edit Zone** screen, where you can rewrite the Zone name and decription.
+- Click on the edit icon of the zone you would like to edit. This will open the zone in the **Edit Zone** screen, where you can make changes to zone name and decription.
 - Click **Save** button to save your changes.
 
+#### Delete a Zone
+- To delete a zone, click the delete icon on the right of any zone. This will open zone in the **Delete Zone** screen, where you can permanently delete the zone.
+- Click **Delete** button. This is permanent and the zone cannot be restored after this action is taken.
 
 ### Devices
 ***
