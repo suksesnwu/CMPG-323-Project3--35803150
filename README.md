@@ -21,14 +21,13 @@
           <li><a href="#devices">Devices</a></li>
         </ul>
       </ul>
-      <ul><a href="#references">References</a></ul>
       <ul><a href="#license">License</a></ul>
     </ol>
 </details>
 
-### General Info
-***
+## General Info
 ### IoT Device Management System
+***
 This is an IoT Web App Device Management System that helps administrators register, organise, monitor, and remotely manage all IoT devices deployed by the organisation. Users and Administrator must register/login to be authorized so that they can register IoT devices, categorise them and deploy them throughout  the  organisation's  buildings  in  predefined  zones. 
 
 **Zones**: _Keep track of areas where the IoT devices are deployed._
@@ -38,44 +37,41 @@ This is an IoT Web App Device Management System that helps administrators regist
 **Device**: _The IoT device collect and share data about the way it is used and about the environment around it._
 
 
-### Quick start
+## Quick start
+
+### Register
 ***
 
-#### Register
-
-
-#### Login
-
-
-
-
-### IoT Web API Device Management System
+### Login
 ***
 
-#### Categories
 
-#### Zones
-##### How to Create a New Zone
+
+
+## IoT Web API Device Management System
+
+### Categories
+***
+
+### Zones
+***
+#### How to Create a New Zone
 - Go to <a href="https://iotsystem35803150.azurewebsites.net/Zones">Zones</a> on the right side of the toolbar (it appears when you're logged in).
-- Click the _plus_ button at the top of your screen or go to <a href="https://iotsystem35803150.azurewebsites.net/Zones/Create">Create Zone</a>.
+- Click the _plus_ button at the top of your screen or go to <a href="https://iotsystem35803150.azurewebsites.net/Zones/Create">Create Zone</a>, you will be able to add new Zone. 
 
-##### Create a New Zone
-Once you've clicked _plus_ or gone to <a href="https://iotsystem35803150.azurewebsites.net/Zones/Create">Create Zone</a>, you will be able to add new Zone. Here you can:
+Here you can:
 - Write zone name
 - Add Zone description
 
-When you’re done, click the Create button to create a new zone.
+When you’re done, click the **Create** button to create a new zone.
 
 
 
-#### Devices
-
-### References
+### Devices
 ***
 
-### License
-***
 
+## License
 
 - Copyright 2022 © <a href="https://www.nwu.ac.za/" target="_blank">NWU</a>.
 
