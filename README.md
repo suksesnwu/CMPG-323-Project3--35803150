@@ -66,11 +66,16 @@ Here you can:
 When you’re done, click the **Create** button to create a new zone.
 
 #### View Your Zones
-To view a list of all the Zones, go to <a href="https://iotsystem35803150.azurewebsites.net/Zones">Zones</a>.
+To view a list of all the Zones, go to <a href="https://iotsystem35803150.azurewebsites.net/Zones">Zones</a> on the right side of the toolbar.
 There are options for each zones, click on the icons next to any zone to do the following (in order):
-- **Edit**: Opens **Edit Zone** so you can make changes to the zone.
-- **View**: See **Zones Details**.
-- **Delete**: Deletes the zone.
+- **Edit**: _Opens **Edit Zone** so you can make changes to the zone._
+- **View**: _See **Zones Details**._
+- **Delete**: _Deletes the zone._
+
+#### Edit and Update an Existing Zone
+You can edit a zone that has already been created.
+- Go to <a href="https://iotsystem35803150.azurewebsites.net/Zones">Zones</a> and click on the edit icon of the zone you would like to edit. This will open the zone in the **Edit Zone** screen, where you can rewrite the Zone name and decription.
+- Click **Save** button to save your changes.
 
 
 ### Devices
