@@ -60,11 +60,17 @@ This is an IoT Web App Device Management System that helps administrators regist
 - Click the _plus_ button at the top of your screen or go to <a href="https://iotsystem35803150.azurewebsites.net/Zones/Create">Create Zone</a>, you will be able to add new Zone. 
 
 Here you can:
-- Write zone name
+- Write a Zone name
 - Add Zone description
 
 When you’re done, click the **Create** button to create a new zone.
 
+#### View Your Zones
+To view a list of all the Zones, go to <a href="https://iotsystem35803150.azurewebsites.net/Zones">Zones</a>.
+There are options for each zones, click on the icons next to any zone to do the following (in order):
+- **Edit**: Opens **Edit Zone** so you can make changes to the zone.
+- **View**: See **Zones Details**.
+- **Delete**: Deletes the zone.
 
 
 ### Devices
